@@ -17,5 +17,6 @@ urlpatterns = patterns('',
     url(r'^loginPrincipal/$', 'polls.views.login_principal', name='login'),
     url(r'^prueba/$', 'polls.views.prueba', name='prueba'),
     url(r'^registroUsuario/$', 'polls.views.registroUsuario', name='registroUsuario'),
+    url(r'', include('social_auth.urls')),
     
 )

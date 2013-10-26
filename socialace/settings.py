@@ -163,3 +163,32 @@ LOGGING = {
         },
     }
 }
+LOGIN_URL = '/login/'
+LOGIN_REDIRECT_URL = '/registroUsuario/'
+LOGIN_ERROR_URL = '/login-error/'
+
+SOCIAL_AUTH_COMPLETE_URL_NAME  = 'socialauth_complete'
+SOCIAL_AUTH_ASSOCIATE_URL_NAME = 'socialauth_associate_complete'
+
+AUTHENTICATION_BACKENDS = (
+            'social_auth.backends.facebook.FacebookBackend',
+            'social_auth.backends.google.GoogleOAuthBackend',
+            'social_auth.backends.google.GoogleOAuth2Backend',
+            'social_auth.backends.google.GoogleBackend',
+            'django.contrib.auth.backends.ModelBackend',
+)
+
+SOCIAL_AUTH_PIPELINE = (
+    'social_auth.backends.pipeline.social.social_auth_user',
+    'social_auth.backends.pipeline.social.associate_user',
+    'social_auth.backends.pipeline.social.load_extra_data',
+    'social_auth.backends.pipeline.user.update_user_details'
+)
+
+SOCIAL_AUTH_ENABLED_BACKENDS = ('google', 'facebook')
+
+FACEBOOK_APP_ID = '203158246533782'
+FACEBOOK_API_SECRET = '97c1295fb4c9481734c436b7e14aeec1'
+GOOGLE_OAUTH2_CLIENT_ID = '579410705083.project.googleusercontent.com'
+GOOGLE_OAUTH2_CLIENT_SECRET = 'DKYCe_QTyXMQ82Vb950d06oi'
+
