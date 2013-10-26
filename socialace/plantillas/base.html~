@@ -219,37 +219,50 @@
 								<span class="navbar-unread"></span>
 							  </a>
 							</li align="LEFT">
-							<li>
+							 <li class="current-menu-item">
 							  <a href="#">
 								Notificaciones
 								<!-- Indicator with number -->
 								<span class="navbar-unread"></span>
 							  </a>
 							</li>
-							<li>
+							 <li class="current-menu-item">
 							  <a href="#">
 								Amigos
 								<!-- Indicator with number -->
 								<span class="navbar-unread"></span>
-							  </a>
-							</li>
-							<li>
-							  <a href="#">
-								Albumes
-								<!-- Indicator without number -->
 								<span class="navbar-unread"></span>
 							  </a>
+								<ul>
+									<li><a href=""><span>Mis Amigos</span></a></li>
+									
+								</ul>
+							  </a>
+							</li>
+							  <li class="current-menu-item">
+							 	<a href="#">Album
+							 	<span class="navbar-unread"></span>
+							  </a>
+								<ul>
+									<li><a href=""><span>Mis Albumes</span></a></li>
+									<li><a href="{% url 'modificarUsuario' %}"><span>Crear</span></a></li>
+									<li><a href="{% url 'modificarAlbum' %}"><span>Modificar</span></a></li>
+								</ul>
+						
+							</li>	
 							
-							</li>
-							<li>
-							  <a href="">
-								Perfil
-								<!-- Indicator without number ../proyecto/plantillas/usuario_consultar.html-->
-								<span class="navbar-unread"></span>
+							 <li class="current-menu-item">
+							 	<a href="#">Perfil
+							 	<span class="navbar-unread"></span>
 							  </a>
+								<ul>
+									<li><a href="{% url 'modificarUsuario' %}"><span>Modificar</span></a></li>
+									
+								</ul>
+						
 							</li>						
 							<li>
-								<form class="formulariodemo cf" action="{% url 'busqueda' %}" method='POST'>{% csrf_token %}
+								<form class="formulariodemo cf" action="" method='POST'>
   <input type="text" placeholder="buscar personas.. " required name="q" >
   <button type="submit">buscar</button>
 </form>
@@ -288,7 +301,7 @@
     minLength:3,
     source: function(req, add){
         $.ajax({
-            url: "{%  url 'busqueda' %}",
+            url: "",
             async: false,
             dataType:'json',
             type:'POST',

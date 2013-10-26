@@ -17,5 +17,10 @@ urlpatterns = patterns('',
     url(r'^loginPrincipal/$', 'polls.views.login_principal', name='login'),
     url(r'^prueba/$', 'polls.views.prueba', name='prueba'),
     url(r'^registroUsuario/$', 'polls.views.registroUsuario', name='registroUsuario'),
+    url(r'^principal/$', 'polls.views.principalInicio', name='principalInicio'),
+    url(r'^modificarUsuario/$', 'polls.views.modificarUsuario',name ='modificarUsuario'),
+    url(r'^modificarAlbum/$', 'polls.views.modificarAlbum',name ='modificarAlbum'),
+    url(r'^registroAlbum/$', 'polls.views.registroAlbum',name ='registroAlbum'),
+    
     
 )
