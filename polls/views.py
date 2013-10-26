@@ -7,7 +7,11 @@ from django.core.urlresolvers import reverse
 
 #Prueba
 def prueba(request):
-	return render_to_response('principalinicio.html',context_instance=RequestContext(request))
+	return render_to_response('albumRegistrar.html',context_instance=RequestContext(request))
+
+#Modificar usuario
+def modificarUsuario(request):
+	return render_to_response('usuarioModificar.html',context_instance=RequestContext(request))
 
 
 #Login Principal
@@ -21,6 +25,16 @@ def registroUsuario(request):
 
 
 #Pagina de inicio despues de login
-def prueba(request):
+def principalInicio(request):
 	return render_to_response('principalinicio.html',context_instance=RequestContext(request))
+
+
+#Crear Album
+def registroAlbum(request):
+	return render_to_response('albumRegistrar.html',context_instance=RequestContext(request))
+
+
+#Modificar Album
+def modificarAlbum(request):
+	return render_to_response('albumModificar.html',context_instance=RequestContext(request))
 

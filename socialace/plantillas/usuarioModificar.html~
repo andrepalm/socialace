@@ -59,7 +59,6 @@
 						        <label>
 						              Foto <input type="file" name="nombre" />
 						         </label> 	
-						         <br>
 						         <label>
 						               <button class="btn btn-hg btn-primary" type="submit">Aceptar</button> 
 						         </label> 
