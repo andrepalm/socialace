@@ -101,6 +101,11 @@
 .style1 {font-family: Verdana, Arial, Helvetica, sans-serif}
 -->
         </style>
+        <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
+  <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+  <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+  <link rel="stylesheet" href="/resources/demos/style.css" />
+
 </head>
 	
 	<body class="home">
@@ -136,7 +141,7 @@
 			
 			<script>
 	$(function() {
-		$( "#datepicker" ).datepicker();
+		$( ".datepicker" ).datepicker();
 	});
 	</script>
 			<!-- MAIN -->
@@ -155,27 +160,32 @@
 						<form name="form1" method="post" action= "" >
 						
 						<table width="482" height="130" border="1" align="left">
-                            <form name="form3" method="post" action="">
+                            <form name="form3" method="post" action="." enctype="multipart/form-data">
+                            {% csrf_token %}
 				            <tr>
  							<td>
                                 <label>
                                      <h5>Registrar Datos</h5>
                                 </label>    							
-                               <br>                               
-                                <label>
+                               <br>
+                               {% for campo in formulario %}
+                              	 <label> 
+                               		{{ campo.label }} {{ campo }}
+                               	 </label>	 
+                               {% endfor %}		                             
+                                <!--label>
                                     Usuario <input type="text" placeholder="usuario" class="form-control" />
                                 </label> 
                                  <label>
-                                    Clave <input type="text" placeholder="usuario" class="form-control" />
+                                    Clave <input type="password" placeholder="clave" class="form-control" />
                                 </label>  
                                 <label>
-                                    Nombre <input type="text" placeholder="clave" class="form-control" />
+                                    Nombre <input type="text" placeholder="nombre" class="form-control" />
                                 </label>
                                 <label>		
-                                    Apellido<input type="text" placeholder="clave" class="form-control"/>
+                                    Apellido<input type="text" placeholder="apellido" class="form-control"/>
                                 </label>
-
-                                <label>
+								<label>
 						             Nacimiento <input type="text" placeholder="nacimiento" class="form-control" />
 						        </label> 
                                 <label>
@@ -190,12 +200,15 @@
                                 <label>
 						             Correo <input type="text" placeholder="correo" class="form-control" />
 						        </label> 
-						        <label>
-						             Privacidad <input type="text" placeholder="privacidad" class="form-control" />
-			                    </label>                           	                      
+						         <label>
+						             Privacidad 
+						             <input type="radio" name="privado" value="1">si 
+									 <input type="radio" name="privado" value="2">no
+									
+			                    </label>                            	                      
 						        <label>
 						              Foto <input type="file" name="nombre" />
-						         </label> 	
+						         </label--> 	
 						         <label>
 						               <button class="btn btn-hg btn-primary" type="submit">Aceptar</button> 
 						         </label> 

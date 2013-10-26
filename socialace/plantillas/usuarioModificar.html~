@@ -4,11 +4,11 @@
 <link rel="stylesheet" type="text/css" href="{{STATIC_URL}}font/css/fontello.css">
 <link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,600,700' rel='stylesheet' type='text/css'>
 	<link rel="stylesheet" href="../../themes/base/jquery.ui.all.css">
-	<script src="../../jquery-1.9.1.js"></script>
-	<script src="../../ui/jquery.ui.core.js"></script>
-	<script src="../../ui/jquery.ui.widget.js"></script>
-	<script src="../../ui/jquery.ui.datepicker.js"></script>
-	<link rel="stylesheet" href="../demos.css">
+        <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
+  <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+  <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+  <link rel="stylesheet" href="/resources/demos/style.css" />
+
 	<script>
 	$(function() {
 		$( "#datepicker" ).datepicker();
@@ -20,16 +20,22 @@
 						<form name="form1" method="post" action= "" >
 						
 						<table width="482" height="130" border="1" align="left">
-                            <form name="form3" method="post" action="">
+                            <form name="form3" method="post" action="{% url 'modificarUsuario' usuario.id %}" enctype="multipart/form-data">
+                            {% csrf_token %}
 				            <tr>
  							<td>
                                 <label>
-                                     <h5>Modificar Datos</h5>
+                                     <h5>Registrar Datos</h5>
                                 </label>    							
-                               <br>                               
-                                
+                               <br>
+                               {% for campo in formulario %}
+                              	 <label> 
+                               		{{ campo.label }} {{ campo }}
+                               	 </label>	 
+                               {% endfor %}	                   
+                                <!--
                                  <label>
-                                    Clave <input type="text" placeholder="usuario" class="form-control" />
+                                    Clave <input type="password" placeholder="usuario" class="form-control" />
                                 </label>  
                                 <label>
                                     Nombre <input type="text" placeholder="clave" class="form-control" />
@@ -53,18 +59,22 @@
 						             Correo <input type="text" placeholder="correo" class="form-control" />
 						        </label> 
 						        <label>
-						             Privacidad <input type="text" placeholder="privacidad" class="form-control" />
+						             Privacidad 
+						             <input type="radio" name="privado" value="1">si 
+									 <input type="radio" name="privado" value="2">no
+									
 			                    </label>                          
 			                    <br> 	                      
 						        <label>
 						              Foto <input type="file" name="nombre" />
-						         </label> 	
+						         </label> -->	
+						         <br>
 						         <label>
 						               <button class="btn btn-hg btn-primary" type="submit">Aceptar</button> 
 						         </label> 
 						    </td>					                                          	                      
 						   	<td>
-                                <img src="{{STATIC_URL}}img/registro.png" alt="SocialAce" with="400" height="400" aling="left">  
+                                <img src="{{STATIC_URL}}img/registro.png" alt="SocialAce" with="400" height="400" aling="left"/>  
                             </td>
                              
                            </table>

@@ -234,7 +234,7 @@
 								<span class="navbar-unread"></span>
 							  </a>
 								<ul>
-									<li><a href=""><span>Mis Amigos</span></a></li>
+									<li><a href="{% url 'verAmigos' %}"><span>Mis Amigos</span></a></li>
 									
 								</ul>
 							  </a>
@@ -245,7 +245,7 @@
 							  </a>
 								<ul>
 									<li><a href=""><span>Mis Albumes</span></a></li>
-									<li><a href="{% url 'modificarUsuario' %}"><span>Crear</span></a></li>
+									<li><a href="{% url 'registroAlbum' %}"><span>Crear</span></a></li>
 									<li><a href="{% url 'modificarAlbum' %}"><span>Modificar</span></a></li>
 								</ul>
 						
@@ -263,7 +263,7 @@
 							</li>						
 							<li>
 								<form class="formulariodemo cf" action="" method='POST'>
-  <input type="text" placeholder="buscar personas.. " required name="q" >
+  <input type="text" placeholder="buscar personas.. " required name="q" id="busqueda"/>
   <button type="submit">buscar</button>
 </form>
 							</li>
@@ -297,9 +297,9 @@
 				<!-- ENDS wrapper-main -->
 			</div>
 			<!-- ENDS MAIN -->
-			<script> $('.formulariodemo cf').autocomplete({
-    minLength:3,
-    source: function(req, add){
+			<script> $('#busqueda').autocomplete({ console.log();
+   // minLength:1,
+    /*source: function(req, add){
         $.ajax({
             url: "",
             async: false,
@@ -315,14 +315,16 @@
  
                 //process response
                 $.each(data.items, function(i, val){
-                    suggestions.push(val[0]);
+                    suggestions.
+                    push(val[0]);
                 });
  
                 //pass array to callback
                 add(suggestions);
             }
         });
-    }
+    }*/
+   // alert("esta funcionando el completar");
 });
 </script>
 	</body>

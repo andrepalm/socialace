@@ -1,5 +1,5 @@
 from django.contrib import admin
-from socialace.models import usuarioPerfil, calendario, instagram, soundcloud,youtube,album, comentario,meGusta, relacionComentario,relacionNotificacion, notificacion
+from polls.models import usuarioPerfil, calendario, instagram, soundcloud,youtube,album, comentario,meGusta, relacionComentario,relacionNotificacion, notificacion
 
 admin.site.register(usuarioPerfil)
 admin.site.register(calendario)
