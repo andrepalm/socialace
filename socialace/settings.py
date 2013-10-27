@@ -2,6 +2,7 @@
 from django.core.urlresolvers import reverse
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
+HEROKU = True
 
 ADMINS = (
     # ('Your Name', 'your_email@example.com'),
@@ -12,17 +13,32 @@ MANAGERS = ADMINS
 import os
 RUTA_PROYECTO = os.path.dirname(os.path.realpath(__file__))
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME': 'socialacebd',                      # Or path to database file if using sqlite3.
-        # The following settings are not used with sqlite3:
-        'USER': 'postgres',
-        'PASSWORD': '1234567',
-        'HOST': 'localhost',                      # Empty for localhost through domain sockets or '127.0.0.1' for localhost through TCP.
-        'PORT': '',                      # Set to empty string for default.
+if not HEROKU:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql_psycopg2', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
+            'NAME': 'socialacebd',                      # Or path to database file if using sqlite3.
+            # The following settings are not used with sqlite3:
+            'USER': 'postgres',
+            'PASSWORD': '1234567',
+            'HOST': 'localhost',                      # Empty for localhost through domain sockets or '127.0.0.1' for localhost through TCP.
+            'PORT': '',                      # Set to empty string for default.
+        }
     }
-}
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql_psycopg2', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
+            'NAME': '',                      # Or path to database file if using sqlite3.
+            # The following settings are not used with sqlite3:
+            'USER': '',
+            'PASSWORD': '',
+            'HOST': '',                      # Empty for localhost through domain sockets or '127.0.0.1' for localhost through TCP.
+            'PORT': '',                      # Set to empty string for default.
+        }
+    }
+
+
 
 # Hosts/domain names that are valid for this site; required if DEBUG is False
 # See https://docs.djangoproject.com/en/1.5/ref/settings/#allowed-hosts
@@ -129,6 +145,7 @@ INSTALLED_APPS = (
     'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:
     'django.contrib.admindocs',
+    'gunicorn',
     'polls',
     
 )
@@ -163,6 +180,19 @@ LOGGING = {
         },
     }
 }
+
+
+if HEROKU:
+    import dj_database_url
+    DASTABASE['default']= dj_database_url.config()
+    DASTABASE['default']['ENGINE']= 'django_postgrespool'
+
+    DATABASE_POOL_ARGS = {
+        'max_overflow': 5,
+        'pool_size': 5,
+        'recycle': 500,
+        }
+
 
 DATE_INPUT_FORMATS = ( '%m/%d/%Y', )
 LOGIN_REDIRECT_URL = reverse('principalInicio')
