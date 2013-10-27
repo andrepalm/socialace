@@ -1,4 +1,4 @@
-{% extends 'base2.html'%}
+{% extends 'base.html'%}
 {% block contenido%}
 	<script>
 	$(function() {
@@ -17,8 +17,8 @@
                                <br> 
                                {% for album in albumes %}
 						      	 <label> 
-						       		*-----Nombre: {{ album.nombre }}
-						       		description: {{ album.descripcion }} <br/>
+						       		*-----Nombre: {{ album.first_name }}
+						       		description: {{ album.last_name }} <br/>
 						       		
 						       	 </label>	 
 						       {% endfor %}                              

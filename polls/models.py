@@ -18,8 +18,14 @@ class UsuarioPerfil(models.Model):
 		return self.fkusuario.username
 
 class RelacionUsuario(models.Model):
-	fkamigo = models.ForeignKey(User)
-	usuario = models.ForeignKey(UsuarioPerfil)
+    fkamigo = models.ForeignKey(User) #es el que NO esta logueado
+    usuario = models.ForeignKey(UsuarioPerfil) # es el usuario Logueado
+    
+    class Meta:
+        unique_together = ['fkamigo', 'usuario']
+
+	def __str__(self):
+		return '%s %s' % (self.fkamigo, self.usuario)
 
 class Calendario(models.Model):
 	fecha = models.DateTimeField('date published')

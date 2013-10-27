@@ -1,15 +1,15 @@
 from django.contrib import admin
-from polls.models import usuarioPerfil, calendario, instagram, soundcloud,youtube,album, comentario,meGusta, relacionComentario,relacionNotificacion, notificacion
+from polls.models import UsuarioPerfil, Calendario, Instagram, SoundCloud, YouTube, Album, Comentario, MeGusta, RelacionComentario, RelacionNotificacion, Notificacion, RelacionUsuario
 
-admin.site.register(usuarioPerfil)
-admin.site.register(calendario)
-admin.site.register(instagram)
-admin.site.register(soundcloud)
-admin.site.register(youtube)
-admin.site.register(album)
-admin.site.register(comentario)
-admin.site.register(meGusta)
-admin.site.register(notificacion)
-admin.site.register(relacionNotificacion)
-admin.site.register(relacionComentario)
+admin.site.register(UsuarioPerfil)
+admin.site.register(Calendario)
+admin.site.register(Instagram)
+admin.site.register(SoundCloud)
+admin.site.register(YouTube)
+admin.site.register(Album)
+admin.site.register(Comentario)
+admin.site.register(MeGusta)
+admin.site.register(Notificacion)
+admin.site.register(RelacionNotificacion)
+admin.site.register(RelacionComentario)
 

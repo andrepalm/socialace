@@ -15,15 +15,16 @@ urlpatterns = patterns('',
 
     # Uncomment the next line to enable the admin:
     url(r'^admin/', include(admin.site.urls)),
-    url(r'^loginPrincipal/$', login,{'template_name':'login_principal.html'}, name='login'),
+    url(r'^loginPrincipal/$', login,{'template_name':'login_principal.html'}, name='loginPrincipal'),
     url(r'^prueba/$', 'polls.views.prueba', name='prueba'),
     url(r'^registroUsuario/$', 'polls.views.registro_usuario', name='registroUsuario'),
     url(r'^principalInicio/$', 'polls.views.principal_inicio', name='principalInicio'),
     url(r'^modificarUsuario/(?P<id_usuario>\d+)/$', 'polls.views.modificar_usuario',name ='modificarUsuario'),
     url(r'^modificarAlbum/(?P<id_album>\d+)/$', 'polls.views.modificar_album',name ='modificarAlbum'),
     url(r'^registroAlbum/$', 'polls.views.registro_album',name ='registroAlbum'),
-
 	url(r'^registroAmigo/$', 'polls.views.registro_amigo',name ='registroAmigo'),
+
+    url(r'^verAmigos/$', 'polls.views.ver_amigos',name ='verAmigos'),    
 
     url(r'^verAlbumes/$', 'polls.views.ver_albumes',name ='verAlbumes'),    
     url(r'^verUsuario/(?P<nombre>.+)/$', 'polls.views.ver_usuario',name ='verUsuario'),

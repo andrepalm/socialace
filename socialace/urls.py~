@@ -22,8 +22,9 @@ urlpatterns = patterns('',
     url(r'^modificarUsuario/(?P<id_usuario>\d+)/$', 'polls.views.modificar_usuario',name ='modificarUsuario'),
     url(r'^modificarAlbum/(?P<id_album>\d+)/$', 'polls.views.modificar_album',name ='modificarAlbum'),
     url(r'^registroAlbum/$', 'polls.views.registro_album',name ='registroAlbum'),
-
 	url(r'^registroAmigo/$', 'polls.views.registro_amigo',name ='registroAmigo'),
+
+    url(r'^verAmigos/$', 'polls.views.ver_amigos',name ='verAmigos'),    
 
     url(r'^verAlbumes/$', 'polls.views.ver_albumes',name ='verAlbumes'),    
     url(r'^verUsuario/(?P<nombre>.+)/$', 'polls.views.ver_usuario',name ='verUsuario'),

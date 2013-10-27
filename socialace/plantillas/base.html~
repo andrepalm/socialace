@@ -221,7 +221,7 @@
 								<span class="navbar-unread"></span>
 							  </a>
 							</li align="LEFT">
-							 
+							
 							 <li class="current-menu-item">
 							  <a href="#">Amigos
 								<!-- Indicator with number -->
@@ -229,7 +229,7 @@
 								<span class="navbar-unread"></span>
 							  </a>
 								<ul>
-									<li><a href="#"><span>Mis Amigos</span></a></li>
+									<li><a href="{% url 'verAmigos' %}"><span>Mis Amigos</span></a></li>
 									
 								</ul>
 							  </a>
