@@ -193,6 +193,7 @@ if HEROKU:
         'recycle': 500,
         }
 
+SECURE_PROXY_SSL_HEADER = ('HTTTP_X_FOWARDED_PROTO', 'https')
 
 DATE_INPUT_FORMATS = ( '%m/%d/%Y', )
 LOGIN_REDIRECT_URL = reverse('principalInicio')

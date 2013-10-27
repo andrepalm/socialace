@@ -181,6 +181,19 @@ LOGGING = {
     }
 }
 
+
+if HEROKU:
+    import dj_database_url
+    DASTABASE['default']= dj_database_url.config()
+    DASTABASE['default']['ENGINE']= 'django_postgrespool'
+
+    DATABASE_POOL_ARGS = {
+        'max_overflow': 5,
+        'pool_size': 5,
+        'recycle': 500,
+        }
+
+
 DATE_INPUT_FORMATS = ( '%m/%d/%Y', )
 LOGIN_REDIRECT_URL = reverse('principalInicio')
 #AUTENTIFICACION FACEBOOK Y GOOGLE+
