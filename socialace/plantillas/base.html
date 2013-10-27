@@ -193,6 +193,7 @@
 					<a href="index.html"><img id="logo" src="{{STATIC_URL}}img/logo3.png" alt="SocialAce" with="190" height="190"/></a>
 				 
 			  </div>
+			  
 	</div>
 			<hr align="LEFT" size="0" width="300" color="white" noshade> 
 				<!-- ENDS wrapper-header -->					
@@ -220,15 +221,13 @@
 							  </a>
 							</li align="LEFT">
 							 <li class="current-menu-item">
-							  <a href="#">
-								Notificaciones
+							  <a href="#">Notificaciones
 								<!-- Indicator with number -->
 								<span class="navbar-unread"></span>
 							  </a>
 							</li>
 							 <li class="current-menu-item">
-							  <a href="#">
-								Amigos
+							  <a href="#">Amigos
 								<!-- Indicator with number -->
 								<span class="navbar-unread"></span>
 								<span class="navbar-unread"></span>
@@ -244,9 +243,21 @@
 							 	<span class="navbar-unread"></span>
 							  </a>
 								<ul>
-									<li><a href=""><span>Mis Albumes</span></a></li>
+									<li><a href="{% url 'verAlbumes' %}"><span>Mis Albumes</span></a></li>
 									<li><a href="{% url 'registroAlbum' %}"><span>Crear</span></a></li>
-									<li><a href="{% url 'modificarAlbum' %}"><span>Modificar</span></a></li>
+									<li><a href="#"><span>Modificar</span></a>
+										<span class="navbar-unread"></span>
+											<ul>
+										{% for album in albumes %}
+										<label> 
+								   		
+								   		<li><a href="{% url 'modificarAlbum' album.id %}"><span>{{ album.name }} {{ album }}</span></a></li>
+					    			   	 </label>	 
+				    					   {% endfor %} 
+											
+											
+										</ul>
+									</li>
 								</ul>
 						
 							</li>	
@@ -260,7 +271,22 @@
 									
 								</ul>
 						
-							</li>						
+							</li>	
+							<li align="LEFT">
+							  <a href="{% url 'logout' %}">
+								Salir
+								<!-- Indicator with number -->
+								<span class="navbar-unread"></span>
+							  </a>
+							</li>	
+											
+							 <li align="LEFT">
+							  <a href="{% url 'logout' %}">
+								USUARIO: {{ usuario.username }}
+								<!-- Indicator with number -->
+								<span class="navbar-unread"></span>
+							  </a>
+							</li>	
 							<li>
 								<form class="formulariodemo cf" action="" method='POST'>
   <input type="text" placeholder="buscar personas.. " required name="q" id="busqueda"/>

@@ -1,5 +1,5 @@
 from django import forms
-from polls.models import UsuarioPerfil
+from polls.models import UsuarioPerfil, Calendario, Album
 from django.contrib.auth.models import User
 import datetime
 
@@ -73,7 +73,7 @@ class EditarUsuario(RegistroUsuario):
         self.fields['clave'].required = False
         
     def modificar_registro(self, usuario):
-        usuario.set_password(self.cleaned_data['clave'])
+        (self.cleaned_data['clave'])
         usuario.first_name = self.cleaned_data['nombre']
         usuario.last_name = self.cleaned_data['apellido']
         usuario.usuarioperfil.fechanacimiento = self.cleaned_data['nacimiento']
@@ -87,3 +87,40 @@ class EditarUsuario(RegistroUsuario):
             usuario.usuarioperfil.foto = foto
         usuario.usuarioperfil.save()
         usuario.save()
+
+
+#Formulario del Album
+class RegistroAlbum(forms.Form):
+    nombre = forms.CharField(max_length=50, label='Nombre')
+    descripcion = forms.CharField(max_length=20,label='Descripcion')
+    privacidad = forms.BooleanField(label='Privacidad', required=False)
+    foto = forms.ImageField(label='Foto', required=False)   
+   
+    def __init__(self,*args, **kwargs):
+        super(RegistroAlbum, self).__init__(*args, **kwargs)
+        self.fields['nombre'].widget.attrs = {'placeholder': 'nombre', 'class': 'form-control'}
+        self.fields['descripcion'].widget.attrs = {'placeholder': 'descripcion', 'class': 'form-control'}
+        self.fields['foto'].widget.attrs = {'placeholder': 'foto', 'class': 'form-control'}
+        
+    def procesar_album(self,usuario):
+        nombre = self.cleaned_data['nombre']
+        descripcion = self.cleaned_data['descripcion']
+        privacidad = self.cleaned_data['privacidad']
+        foto = self.cleaned_data['foto']
+        calendar = Calendario(fecha=datetime.date.today())
+        calendar.save()
+        album = Album(nombre=nombre, descripcion=descripcion, privacidad=privacidad, fkusuario=usuario, fkcalendario=calendar)
+        if foto:
+            album.foto = foto
+        album.save()
+
+    def modificar_album(self, album):
+        album.nombre = self.cleaned_data['nombre']
+        album.descripcion = self.cleaned_data['descripcion']
+        album.privacidad = self.cleaned_data['privacidad']
+        foto = self.cleaned_data['foto']
+        calendar = Calendario(fecha=datetime.date.today())
+        calendar.save()
+        if foto:
+            album.foto = foto
+        album.save()    

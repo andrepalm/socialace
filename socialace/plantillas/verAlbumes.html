@@ -17,16 +17,20 @@
 
 	<!-- content -->
 					<div id="content">
-						<form name="form1" method="post" action= "" >
-						
-						<table width="482" height="130" border="1" align="left">
-                            <form name="form3" method="post" action="">
+						<table width="482" height="130" border="1" align="left">                                                         
 				            <tr>
  							<td>
                                 <label>
                                      <h5>Mis Albumes</h5>
                                 </label>    							
-                               <br>                               
+                               <br> 
+                               {% for album in albumes %}
+						      	 <label> 
+						       		*-----Nombre: {{ album.nombre }}
+						       		description: {{ album.descripcion }} <br/>
+						       		
+						       	 </label>	 
+						       {% endfor %}                              
                                   
                                 
 						    </td>					                                          	                      
@@ -35,7 +39,6 @@
                             </td>
                              
                            </table>
-                         </form>
                       </div>
 					<!-- ENDS content -->						
 {% endblock %}

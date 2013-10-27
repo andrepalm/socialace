@@ -22,45 +22,45 @@ class Calendario(models.Model):
 	fecha = models.DateTimeField('date published')
 
 	def __str__(self):
-		return self.cal_fecha
+		return '%s' % self.fecha
 
 
 class Instagram(models.Model):
 	url = models.CharField(max_length=200)
 
 	def __str__(self):
-		return self.ins_url
+		return self.url
 
 
 class SoundCloud(models.Model):
 	url = models.CharField(max_length=200)
 
 	def __str__(self):
-		return self.sou_url
+		return self.url
 
 
 class YouTube(models.Model):
 	url = models.CharField(max_length=200)
 
 	def __str__(self):
-		return self.you_url
+		return self.url
 
 
 class Album(models.Model):
 	nombre = models.CharField(max_length=100)
 	descripcion = models.CharField(max_length=200)
-	privacidad = models.BooleanField(default= True)
+	privacidad = models.BooleanField(default=True)
 	foto = models.ImageField(upload_to='imagenalbum')
-	fkusuario = models.ForeignKey(UsuarioPerfil)
+	fkusuario = models.ForeignKey(User)
 	fkcalendario = models.ForeignKey(Calendario)
 
 	def __str__(self):
-		return self.alb_nombre
+		return self.nombre
 
 
 class Comentario(models.Model):
 	descripcion	= models.CharField(max_length=200)
-	fkemisor = models.ForeignKey(UsuarioPerfil)
+	fkemisor = models.ForeignKey(User)
 	fkalbum	= models.ForeignKey(Album)
 	fkinstagram	= models.ForeignKey(Instagram)
 	fkyoutube = models.ForeignKey(YouTube)
@@ -68,12 +68,12 @@ class Comentario(models.Model):
 	fkcalendario = models.ForeignKey(Calendario)
 	
 	def __str__(self):
-		return self.com_descripcion
+		return self.descripcion
 
 
 class MeGusta(models.Model):
 	like = models.CharField(max_length=200)
-	fkemisor = models.ForeignKey(UsuarioPerfil)
+	fkemisor = models.ForeignKey(User)
 	fkalbum	= models.ForeignKey(Album)
 	fkinstagram	= models.ForeignKey(Instagram)
 	fkyoutube = models.ForeignKey(YouTube)
@@ -81,27 +81,21 @@ class MeGusta(models.Model):
 	fkcalendario = models.ForeignKey(Calendario)
 
 	def __str__(self):
-		return self.mgu_like
+		return self.like
 
 class Notificacion(models.Model):
-	fkemisor = models.ForeignKey(UsuarioPerfil)
+	fkemisor = models.ForeignKey(User)
 	fkalbum	= models.ForeignKey(Album)
 	fkinstagram	= models.ForeignKey(Instagram)
 	fkyoutube = models.ForeignKey(YouTube)
 	fksoundcloud = models.ForeignKey(SoundCloud)
 	fkcalendario = models.ForeignKey(Calendario)
-	def __str__(self):
-		return self.not_id
+	
 
 class RelacionNotificacion(models.Model):
 	fknotificacion = models.ManyToManyField(Notificacion)
 
-	def __str__(self):
-		return self.mgu_like
 
 class RelacionComentario(models.Model):
 	fkcomentario = models.ManyToManyField(Comentario)
-
-	def __str__(self):
-		return self.mgu_like
 

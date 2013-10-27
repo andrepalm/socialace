@@ -155,14 +155,15 @@
                                   <td height="124"><div align="center">
  
                                     <h5>Login</h5>                                    
-                                    <form name="form1" method="post" action="{% url 'login' %}">{% csrf_token %}
+                                    <form name="form1" method="post" action=".">
+                                    {% csrf_token %}
                                       <label>Nombre
-                                        <input type="text" placeholder="NombreUsuario" class="form-control" />
+                                        <input type="text" placeholder="NombreUsuario" class="form-control" name="username"/>
                                       </label>
 										
                                      
                                         <label>Password
-                                        <input type="text" placeholder="Password" class="form-control" />
+                                        <input type="text" placeholder="Password" class="form-control" name="password"/>
                                         </label>    
                                          <label>
                                        <button class="btn btn-hg btn-primary" type="submit"> Aceptar</button> </label>                                 

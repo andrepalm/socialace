@@ -155,20 +155,21 @@
                                   <td height="124"><div align="center">
  
                                     <h5>Login</h5>                                    
-                                    <form name="form1" method="post" action="">
+                                    <form name="form1" method="post" action=".">
+                                    {% csrf_token %}
                                       <label>Nombre
-                                        <input type="text" placeholder="NombreUsuario" class="form-control" />
+                                        <input type="text" placeholder="NombreUsuario" class="form-control" name="username"/>
                                       </label>
 										
                                      
                                         <label>Password
-                                        <input type="text" placeholder="Password" class="form-control" />
+                                        <input type="text" placeholder="Password" class="form-control" name="password"/>
                                         </label>    
                                          <label>
                                        <button class="btn btn-hg btn-primary" type="submit"> Aceptar</button> </label>                                 
                                     </form>
 									
-                                      <label>Registrese por medio de:<div class="fb-send" data-href="http://developers.facebook.com/docs/plugins/" data-width="The pixel width of the plugin" data-height="The pixel height of the plugin" data-colorscheme="light"></div>                                   </label>                                                                                                            
+                   <label>Registrese por medio de:<a rel="nofollow" href="{% url "socialauth_begin" "facebook" %}">Facebook</a><label>                                                                                                            
                                    		
                                   </td>
                                 </tr>

@@ -27,6 +27,6 @@ urlpatterns = patterns('',
     url(r'^verAmigos/$', 'polls.views.ver_amigos',name ='verAmigos'),
     url(r'^verAlbumes/$', 'polls.views.ver_albumes',name ='verAlbumes'),
     url(r'^logout/$', logout, {'next_page': '/loginPrincipal/'} ,name='logout'),
-	url(r'', include('social_auth.urls')),    
+    
     
 )

@@ -1,5 +1,5 @@
 # Django settings for socialace project.
-
+from django.core.urlresolvers import reverse
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
@@ -165,3 +165,34 @@ LOGGING = {
 }
 
 DATE_INPUT_FORMATS = ( '%m/%d/%Y', )
+LOGIN_REDIRECT_URL = reverse('principalInicio')
+#AUTENTIFICACION FACEBOOK Y GOOGLE+
+LOGIN_URL = '/login/'
+#LOGIN_REDIRECT_URL = '/facebook/'
+#LOGIN_ERROR_URL = '/login-error/'
+
+
+SOCIAL_AUTH_COMPLETE_URL_NAME  = 'socialauth_complete'
+SOCIAL_AUTH_ASSOCIATE_URL_NAME = 'socialauth_associate_complete'
+
+AUTHENTICATION_BACKENDS = (
+            'social_auth.backends.facebook.FacebookBackend',
+            'social_auth.backends.google.GoogleOAuthBackend',
+            'social_auth.backends.google.GoogleOAuth2Backend',
+            'social_auth.backends.google.GoogleBackend',
+            'django.contrib.auth.backends.ModelBackend',
+)
+
+SOCIAL_AUTH_PIPELINE = (
+    'social_auth.backends.pipeline.social.social_auth_user',
+    'social_auth.backends.pipeline.social.associate_user',
+    'social_auth.backends.pipeline.social.load_extra_data',
+    'social_auth.backends.pipeline.user.update_user_details'
+)
+
+SOCIAL_AUTH_ENABLED_BACKENDS = ('google', 'facebook')
+
+FACEBOOK_APP_ID = '203158246533782'
+FACEBOOK_API_SECRET = '97c1295fb4c9481734c436b7e14aeec1'
+GOOGLE_OAUTH2_CLIENT_ID = '982082487474-jpkgtbep5lct0kjp4q40c8avbbg0ppho.apps.googleusercontent.com'
+GOOGLE_OAUTH2_CLIENT_SECRET = '-d8_3Ebw-X5_83gFpCFK8ygd'
