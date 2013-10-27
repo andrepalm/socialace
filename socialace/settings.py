@@ -184,8 +184,8 @@ LOGGING = {
 
 if HEROKU:
     import dj_database_url
-    DASTABASE['default']= dj_database_url.config()
-    DASTABASE['default']['ENGINE']= 'django_postgrespool'
+    DATABASES['default']= dj_database_url.config()
+    DATABASES['default']['ENGINE']= 'django_postgrespool'
 
     DATABASE_POOL_ARGS = {
         'max_overflow': 5,
