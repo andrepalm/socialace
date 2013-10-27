@@ -165,7 +165,7 @@ LOGGING = {
 }
 
 DATE_INPUT_FORMATS = ( '%m/%d/%Y', )
-LOGIN_REDIRECT_URL = reverse('principalInicio')
+LOGIN_REDIRECT_URL = '/principalInicio/'
 #AUTENTIFICACION FACEBOOK Y GOOGLE+
 LOGIN_URL = '/login/'
 #LOGIN_REDIRECT_URL = '/facebook/'

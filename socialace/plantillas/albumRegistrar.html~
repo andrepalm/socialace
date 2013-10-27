@@ -13,7 +13,7 @@
 	<!-- content -->
 		<div id="content">
 			<table width="482" height="130" border="1" align="left">
-                <form enctype="multipart/form-data" name="form3" method="post" action="{% url 'principalInicio' %}" >
+                <form enctype="multipart/form-data" name="form3" method="post" action="." >
                 {% csrf_token %}
 	            <tr>
 				<td>

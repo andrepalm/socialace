@@ -1,5 +1,5 @@
 from django import forms
-from polls.models import UsuarioPerfil, Calendario, Album
+from polls.models import UsuarioPerfil, Calendario, Album, RelacionUsuario
 from django.contrib.auth.models import User
 import datetime
 
@@ -118,9 +118,26 @@ class RegistroAlbum(forms.Form):
         album.nombre = self.cleaned_data['nombre']
         album.descripcion = self.cleaned_data['descripcion']
         album.privacidad = self.cleaned_data['privacidad']
-        album.foto = self.cleaned_data['foto']
+        foto = self.cleaned_data['foto']
         calendar = Calendario(fecha=datetime.date.today())
         calendar.save()
         if foto:
             album.foto = foto
         album.save()    
+
+#Relacion Usuario
+class RegistroAmigo(forms.Form):
+    fkamigo = forms.IntegerField(label='Amigo')
+    
+    def __init__(self,*args, **kwargs):	
+        super(RegistroAmigo, self).__init__(*args, **kwargs)
+        self.fields['fkamigo'].widget.attrs = {'placeholder': 'fkamigo', 'class': 'form-control'}
+        
+    def procesar_amigo(self, usuario):
+        id_amigo = self.cleaned_data['fkamigo']
+        import pdb; pdb.set_trace()
+        id_usuario = UsuarioPerfil.objects.get(fkamigo__id=usuario.id)
+        amigo = User.objects.get(id=id_amigo)
+        amistad = RelacionUsuario(usuario=id_usuario, fkamigo=amigo)
+        amistad.save()
+        
