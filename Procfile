@@ -1,1 +1,1 @@
-web: gunicorn DesarrolloProyecto.wsgi
+web: gunicorn socialace.wsgi
