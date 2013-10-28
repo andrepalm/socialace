@@ -17,6 +17,9 @@ class UsuarioPerfil(models.Model):
 	def __str__(self):
 		return self.fkusuario.username
 
+class RelacionUsuario(models.Model):
+	fkamigo = models.ForeignKey(User)
+	usuario = models.ForeignKey(UsuarioPerfil)
 
 class Calendario(models.Model):
 	fecha = models.DateTimeField('date published')

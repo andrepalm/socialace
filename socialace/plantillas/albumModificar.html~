@@ -20,7 +20,7 @@
 						<form name="form1" method="post" action= "" >
 						
 						<table width="482" height="130" border="1" align="left">
-                            <form name="form3" method="POST" action="{% url 'modificarAlbum' album.id %}" enctype="multipart/form-data">
+                            <form name="form3" method="POST" action="{% url 'modificarAlbum' album.id %}" enctype="multipart/form-data"/>
                             {% csrf_token %}
 				            <tr>
  							<td>

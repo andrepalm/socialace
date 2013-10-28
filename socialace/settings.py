@@ -187,16 +187,16 @@ if HEROKU:
     DATABASES['default']= dj_database_url.config()
     DATABASES['default']['ENGINE']= 'django_postgrespool'
 
-    DATABASE_POOL_ARGS = {
-        'max_overflow': 5,
-        'pool_size': 5,
-        'recycle': 500,
-        }
+    #DATABASE_POOL_ARGS = {
+    #    'max_overflow': 5,
+    #    'pool_size': 5,
+    #    'recycle': 500,
+    #    }
 
 SECURE_PROXY_SSL_HEADER = ('HTTTP_X_FOWARDED_PROTO', 'https')
 
 DATE_INPUT_FORMATS = ( '%m/%d/%Y', )
-LOGIN_REDIRECT_URL = reverse('principalInicio')
+LOGIN_REDIRECT_URL = '/principalInicio/'
 #AUTENTIFICACION FACEBOOK Y GOOGLE+
 LOGIN_URL = '/login/'
 #LOGIN_REDIRECT_URL = '/facebook/'
