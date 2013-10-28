@@ -2,7 +2,7 @@
 from django.core.urlresolvers import reverse
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
-HEROKU = True
+HEROKU =False 
 
 ADMINS = (
     # ('Your Name', 'your_email@example.com'),
@@ -187,11 +187,11 @@ if HEROKU:
     DATABASES['default']= dj_database_url.config()
     DATABASES['default']['ENGINE']= 'django_postgrespool'
 
-    #DATABASE_POOL_ARGS = {
-    #    'max_overflow': 5,
-    #    'pool_size': 5,
-    #    'recycle': 500,
-    #    }
+    DATABASE_POOL_ARGS = {
+        'max_overflow': 5,
+        'pool_size': 5,
+        'recycle': 500,
+        }
 
 SECURE_PROXY_SSL_HEADER = ('HTTTP_X_FOWARDED_PROTO', 'https')
 
