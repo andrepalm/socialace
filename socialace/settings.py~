@@ -2,7 +2,7 @@
 from django.core.urlresolvers import reverse
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
-HEROKU = True
+HEROKU =False 
 
 ADMINS = (
     # ('Your Name', 'your_email@example.com'),
@@ -184,8 +184,8 @@ LOGGING = {
 
 if HEROKU:
     import dj_database_url
-    DASTABASE['default']= dj_database_url.config()
-    DASTABASE['default']['ENGINE']= 'django_postgrespool'
+    DATABASES['default']= dj_database_url.config()
+    DATABASES['default']['ENGINE']= 'django_postgrespool'
 
     DATABASE_POOL_ARGS = {
         'max_overflow': 5,
@@ -193,9 +193,10 @@ if HEROKU:
         'recycle': 500,
         }
 
+SECURE_PROXY_SSL_HEADER = ('HTTTP_X_FOWARDED_PROTO', 'https')
 
 DATE_INPUT_FORMATS = ( '%m/%d/%Y', )
-LOGIN_REDIRECT_URL = reverse('principalInicio')
+LOGIN_REDIRECT_URL = '/principalInicio/'
 #AUTENTIFICACION FACEBOOK Y GOOGLE+
 LOGIN_URL = '/login/'
 #LOGIN_REDIRECT_URL = '/facebook/'

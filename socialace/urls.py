@@ -29,6 +29,13 @@ urlpatterns = patterns('',
     url(r'^verUsuario/(?P<nombre>.+)/$', 'polls.views.ver_usuario',name ='verUsuario'),
     url(r'^buscar/$', 'polls.views.busqueda',name ='busqueda'),
     url(r'^logout/$', logout, {'next_page': '/loginPrincipal/'} ,name='logout'),
-	url(r'', include('social_auth.urls')),    
+    url(r'', include('social_auth.urls')),    
     
+)
+urlpatterns += patterns('',
+    (r'^media/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.MEDIA_ROOT}),
+)
+
+urlpatterns += patterns('',
+    (r'^static/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.STATIC_ROOT}),
 )

@@ -2,7 +2,7 @@
 from django.core.urlresolvers import reverse
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
-HEROKU =False 
+HEROKU =True 
 
 ADMINS = (
     # ('Your Name', 'your_email@example.com'),
@@ -227,3 +227,5 @@ FACEBOOK_APP_ID = '203158246533782'
 FACEBOOK_API_SECRET = '97c1295fb4c9481734c436b7e14aeec1'
 GOOGLE_OAUTH2_CLIENT_ID = '982082487474-jpkgtbep5lct0kjp4q40c8avbbg0ppho.apps.googleusercontent.com'
 GOOGLE_OAUTH2_CLIENT_SECRET = '-d8_3Ebw-X5_83gFpCFK8ygd'
+
+
